@@ -287,3 +287,5 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# Local testing and reporting
+.reports/

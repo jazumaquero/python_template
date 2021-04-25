@@ -8,3 +8,5 @@ take following points into account:
 * This project has been build for Python {{ cookiecutter.python_version }}.
 * This project uses [poetry](https://python-poetry.org/) for building and dependency management.
 * Poetry has been configured in order to use some virtual environment at this project directory named *.venv*.
+* Project is configured to use *pytest* for running tests and *coverage* to obtain code coverage.
+* Testing and coverage reports are stored into reports folder

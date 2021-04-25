@@ -53,3 +53,5 @@ In case of using windows, you can use [pyenv-win](https://github.com/pyenv-win/p
 environment, what maybe convenient in case you are using some IDE like *Pycharm* or *VisualStudioCode* (see config at
 ```poetry.toml``` file).
 * Test framework is [pytest](https://docs.pytest.org/en/reorganize-docs/contents.html).
+* Coverage analysis is done with [coverage](https://coverage.readthedocs.io/en/stable/index.html).
+* Reporting files created (currently for *pytest* and *coverage*) on inside project directory with name ```.reports```.

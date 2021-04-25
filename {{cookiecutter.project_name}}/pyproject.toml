@@ -1,3 +1,4 @@
+# Project Information Section
 [tool.poetry]
 name = "{{ cookiecutter.project_name }}"
 version = "{{ cookiecutter.version }}"
@@ -5,12 +6,51 @@ description = "{{ cookiecutter.description }}"
 authors = ["{{ cookiecutter.author }} <{{ cookiecutter.email }}>"]
 readme = "README.rst"
 
+# Project Dependencies Section
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.python_version }}"
 
+# Development Dependencies Section
 [tool.poetry.dev-dependencies]
-pytest = "*"
+pytest = "^6.2.3"
+coverage = { extras = ["toml"], version = "^5.5" }
 
+# Pytest Configuration Section (see more at https://docs.pytest.org/en/stable/reference.html#ini-options-ref)
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--verbose --junitxml .reports/junit/pytests-results.xml"
+
+# Coverage Configuration Section (see more at https://coverage.readthedocs.io/en/stable/config.html)
+[tool.coverage.paths]
+source = ["{{ cookiecutter.package_name }}", "*/site-packages"]
+
+[tool.coverage.run]
+branch = true
+source = ["{{ cookiecutter.package_name }}"]
+
+[tool.coverage.report]
+ignore_errors = true
+exclude_lines = [
+    # Have to re-enable the standard pragma
+    "pragma: no cover",
+    # Don't complain about missing debug-only code:
+    "def __repr__",
+    "if self\\.debug",
+    # Don't complain if tests don't hit defensive assertion code:
+    "raise AssertionError",
+    "raise NotImplementedError",
+    # Don't complain if non-runnable code isn't run:
+    "if 0:",
+    "if __name__ == .__main__.:"
+]
+
+[tool.coverage.xml]
+output = ".reports/coverage/coverage.xml"
+
+[tool.coverage.html]
+directory = ".reports/coverage-html/coverage.html"
+
+# Build System Section
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
