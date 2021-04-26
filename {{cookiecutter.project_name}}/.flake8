@@ -1,0 +1,8 @@
+[flake8]
+# E265: block comment should start with '# '
+# E401: multiple imports on one line
+# W503: line break occurred before a binary operator
+ignore = E265,E401,W503
+max-line-length = 120
+max-complexity = 10
+format=pylint
