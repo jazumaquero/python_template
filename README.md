@@ -1,5 +1,5 @@
 # python_template
-Just another cookiecutter template to stop writing Python boilerplate and improve productivity
+Just another opinionated cookiecutter template to stop writing Python boilerplate and improve productivity
 
 ## Introduction
 Main objective of this template is to explore modern Python tools that may help on your daily basis job, mainly focus on
@@ -12,9 +12,9 @@ This template is inspired on awesome work previously made by [Claudio Jolowicz](
 from [Cristobal Carnero Liñán](https://github.com/cristobalcl) 
 [How to start a Python project with Django in 2020](https://medium.com/@cristobalcl/how-to-start-a-python-project-with-django-in-2020-803122721b23).
 
-Anyway, you won't never find any kind of silver bullets or golden hammers out there, so that, I have adapted their
-excellent work to my own way of working and my personal preferences, so, this template probably won't meet your
-expectations.
+Anyway, you won't find any kind of silver bullets or golden hammers out there, so that, I have adapted their excellent
+work to my own way of working and my personal preferences, so, this template probably won't meet your expectations,
+because, as I have already mentioned, is some *opinionated template*.
 
 So, please explore solutions already available out there, understand them, and adapt to your own way of working. In
 other words,*do not re-invent the wheel!*.
@@ -58,3 +58,7 @@ environment, what maybe convenient in case you are using some IDE like *Pycharm*
 * Linting is made with [flake8 framework](https://flake8.pycqa.org/en/latest/), including:
 >* Proper naming convention check with [pep8-naming](https://github.com/PyCQA/pep8-naming).
 >* Configuration included at ```.flake8``` file.
+* Continuous Integration using with [tox](https://tox.readthedocs.io/en/latest/), including
+[tox-poetry](https://github.com/tkukushkin/tox-poetry) integration (probably will include
+[nox](https://nox.thea.codes/en/stable/) support later, but currently I use **Pycharm** a lot and its *tox* support is
+quite convenient).

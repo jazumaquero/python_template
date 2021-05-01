@@ -14,8 +14,8 @@ FIND_LATEST_PYTHON_VERSION_AVAILABLE_COMMAND = "pyenv install --list | grep -v -
 # Command template to install some specific Python version with pyenv
 INSTALL_PYTHON_COMMAND = "pyenv install {}"
 
-# Command template to ensure poetry is installed
-INSTALL_POETRY_COMMAND = "pyenv local {} && pip install --upgrade pip && pip install poetry"
+# Command template to ensure poetry, tox and tox-poetry is installed
+INSTALL_POETRY_AND_TOX_COMMAND = "pyenv local {} && pip install --upgrade pip && pip install poetry tox tox-poetry"
 
 # Command template to create some virtual environment inside project folder (make easy to use IDEs)
 CREATE_VIRTUAL_ENVIRONMENT_COMMAND = "pyenv local {} && python -m venv .venv"
@@ -40,9 +40,9 @@ def install_base_dependencies():
         cmd = INSTALL_PYTHON_COMMAND.format(python_version)
         os.system(cmd)
 
-    def ensure_poetry_is_installed():
+    def ensure_poetry_and_tox_are_installed():
         logging.info("Installing poetry.")
-        cmd = INSTALL_POETRY_COMMAND.format(python_version)
+        cmd = INSTALL_POETRY_AND_TOX_COMMAND.format(python_version)
         os.system(cmd)
 
     def ensure_virtual_env_is_created():
@@ -53,7 +53,7 @@ def install_base_dependencies():
     ensure_pyenv_is_updated()
     python_version = get_latest_python_version()
     ensure_python_version_is_installed()
-    ensure_poetry_is_installed()
+    ensure_poetry_and_tox_are_installed()
     ensure_virtual_env_is_created()
 
 
