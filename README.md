@@ -57,6 +57,8 @@ environment, what maybe convenient in case you are using some IDE like *Pycharm*
 * Reporting files created (currently for *pytest* and *coverage*) on inside project directory with name ```.reports```.
 * Linting is made with [flake8 framework](https://flake8.pycqa.org/en/latest/), including:
 >* Proper naming convention check with [pep8-naming](https://github.com/PyCQA/pep8-naming).
+>* Added [flake8-bugbear](https://github.com/PyCQA/flake8-bugbear) to early detect bug and risky designs.
+>* Added [flake8-bandit](https://github.com/tylerwince/flake8-bandit) to include some more extra rules.
 >* Configuration included at ```.flake8``` file.
 * Continuous Integration using with [tox](https://tox.readthedocs.io/en/latest/), including
 [tox-poetry](https://github.com/tkukushkin/tox-poetry) integration (probably will include
