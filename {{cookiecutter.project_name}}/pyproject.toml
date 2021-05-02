@@ -18,6 +18,7 @@ flake8 = "^3.9.1"
 flake8-bandit = "^2.1.2"
 flake8-bugbear = "^21.4.3"
 pep8-naming = "^0.11.1"
+mypy = "^0.812"
 
 # Pytest Configuration Section (see more at https://docs.pytest.org/en/stable/reference.html#ini-options-ref)
 [tool.pytest.ini_options]
