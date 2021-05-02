@@ -61,6 +61,7 @@ environment, what maybe convenient in case you are using some IDE like *Pycharm*
 >* Added [flake8-bandit](https://github.com/tylerwince/flake8-bandit) to include some more extra rules.
 >* Configuration included at ```.flake8``` file.
 * Static Type checking using [mypy](https://mypy.readthedocs.io/en/latest/index.html).
+* Runtime Type checking using [typeguard](https://typeguard.readthedocs.io/en/latest/index.html) with *pytest* integration.
 * Continuous Integration using with [tox](https://tox.readthedocs.io/en/latest/), including
 [tox-poetry](https://github.com/tkukushkin/tox-poetry) integration (probably will include
 [nox](https://nox.thea.codes/en/stable/) support later, but currently I use **Pycharm** a lot and its *tox* support is
