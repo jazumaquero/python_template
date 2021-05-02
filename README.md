@@ -59,6 +59,9 @@ environment, what maybe convenient in case you are using some IDE like *Pycharm*
 >* Proper naming convention check with [pep8-naming](https://github.com/PyCQA/pep8-naming).
 >* Added [flake8-bugbear](https://github.com/PyCQA/flake8-bugbear) to early detect bug and risky designs.
 >* Added [flake8-bandit](https://github.com/tylerwince/flake8-bandit) to include some more extra rules.
+>* Added [flake8-docstrins](https://gitlab.com/pycqa/flake8-docstrings) and
+[flake8-rst-docstrings](https://github.com/peterjc/flake8-rst-docstrings) for **docstring** linting.
+>* Also added [darglint](https://github.com/terrencepreilly/darglint) as **flake8** plugin to lint documentation.
 >* Configuration included at ```.flake8``` file.
 * Static Type checking using [mypy](https://mypy.readthedocs.io/en/latest/index.html).
 * Runtime Type checking using [typeguard](https://typeguard.readthedocs.io/en/latest/index.html) with *pytest* integration.

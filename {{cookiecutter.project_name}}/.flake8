@@ -6,3 +6,6 @@ ignore = E265,E401,W503
 max-line-length = 120
 max-complexity = 10
 format=pylint
+# Darglint section
+docstring_style=sphinx
+strictness = long
