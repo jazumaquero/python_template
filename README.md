@@ -62,6 +62,9 @@ environment, what maybe convenient in case you are using some IDE like *Pycharm*
 >* Configuration included at ```.flake8``` file.
 * Static Type checking using [mypy](https://mypy.readthedocs.io/en/latest/index.html).
 * Runtime Type checking using [typeguard](https://typeguard.readthedocs.io/en/latest/index.html) with *pytest* integration.
+* Generates documentation using [sphinx](https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html).
+>* Also allows using both *rst* and *md* files just by using [myst-parser](https://myst-parser.readthedocs.io/en/latest/).
+>* Using *read-the-doscs* template for rendering documentation.
 * Continuous Integration using with [tox](https://tox.readthedocs.io/en/latest/), including
 [tox-poetry](https://github.com/tkukushkin/tox-poetry) integration (probably will include
 [nox](https://nox.thea.codes/en/stable/) support later, but currently I use **Pycharm** a lot and its *tox* support is

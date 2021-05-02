@@ -21,6 +21,9 @@ pep8-naming = "^0.11.1"
 mypy = "^0.812"
 typeguard = "^2.12.0"
 Pygments = "^2.8.1"
+Sphinx = "^3.5.4"
+sphinx-rtd-theme = "^0.5.2"
+myst-parser = "^0.13.7"
 
 # Pytest Configuration Section (see more at https://docs.pytest.org/en/stable/reference.html#ini-options-ref)
 [tool.pytest.ini_options]
