@@ -13,6 +13,7 @@ python = "^{{ cookiecutter.python_version }}"
 # Development Dependencies Section
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.3"
+xdoctest = "^0.15.4"
 coverage = { extras = ["toml"], version = "^5.5" }
 flake8 = "^3.9.1"
 flake8-bandit = "^2.1.2"
@@ -31,7 +32,7 @@ myst-parser = "^0.13.7"
 # Pytest Configuration Section (see more at https://docs.pytest.org/en/stable/reference.html#ini-options-ref)
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "--verbose --junitxml .reports/junit/pytests-results.xml"
+addopts = "--verbose --xdoctest --junitxml .reports/junit/pytests-results.xml"
 
 # Coverage Configuration Section (see more at https://coverage.readthedocs.io/en/stable/config.html)
 [tool.coverage.paths]
