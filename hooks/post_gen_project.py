@@ -20,6 +20,12 @@ INSTALL_POETRY_AND_TOX_COMMAND = "pyenv local {} && pip install --upgrade pip &&
 # Command template to create some virtual environment inside project folder (make easy to use IDEs)
 CREATE_VIRTUAL_ENVIRONMENT_COMMAND = "pyenv local {} && python -m venv .venv"
 
+# Command template to install all dependencies on virtual environment
+INSTALL_DEPENDENCIES_ON_VIRTUAL_ENVIRONMENT_COMMAND = "poetry install"
+
+# Command template to initialize git with pre-commit hooks
+INIT_GIT_ON_PROJECT_COMMAND = "git init && poetry run pre-commit install"
+
 
 def install_base_dependencies():
     def get_latest_python_version():
@@ -50,11 +56,23 @@ def install_base_dependencies():
         cmd = CREATE_VIRTUAL_ENVIRONMENT_COMMAND.format(python_version)
         os.system(cmd)
 
+    def install_all_dependencies():
+        logging.info("Install all dependencies on virtual environment.")
+        cmd = INSTALL_DEPENDENCIES_ON_VIRTUAL_ENVIRONMENT_COMMAND
+        os.system(cmd)
+
+    def init_git_on_local():
+        logging.info("Initialize git repository on local with pre-commit hooks.")
+        cmd = INIT_GIT_ON_PROJECT_COMMAND
+        os.system(cmd)
+
     ensure_pyenv_is_updated()
     python_version = get_latest_python_version()
     ensure_python_version_is_installed()
     ensure_poetry_and_tox_are_installed()
     ensure_virtual_env_is_created()
+    install_all_dependencies()
+    init_git_on_local()
 
 
 if __name__ == "__main__":
