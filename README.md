@@ -73,3 +73,6 @@ environment, what maybe convenient in case you are using some IDE like *Pycharm*
 [tox-poetry](https://github.com/tkukushkin/tox-poetry) integration (probably will include
 [nox](https://nox.thea.codes/en/stable/) support later, but currently I use **Pycharm** a lot and its *tox* support is
 quite convenient).
+* Keep repository neater, just by using a bunch of useful [pre-commit hooks](https://pre-commit.com/) working together
+with [black](https://black.readthedocs.io/en/stable/index.html) to warranty standard coding conventions,
+and [isort](https://pycqa.github.io/isort/) for keep imports in order.
