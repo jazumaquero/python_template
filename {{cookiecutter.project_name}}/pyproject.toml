@@ -32,6 +32,7 @@ myst-parser = "^0.13.7"
 black = "^21.5b0"
 isort = "^5.8.0"
 pre-commit = "^2.12.1"
+gitchangelog = "^3.0.4"
 
 # Pytest Configuration Section (see more at https://docs.pytest.org/en/stable/reference.html#ini-options-ref)
 [tool.pytest.ini_options]

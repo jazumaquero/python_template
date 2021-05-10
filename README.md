@@ -76,3 +76,4 @@ quite convenient).
 * Keep repository neater, just by using a bunch of useful [pre-commit hooks](https://pre-commit.com/) working together
 with [black](https://black.readthedocs.io/en/stable/index.html) to warranty standard coding conventions,
 and [isort](https://pycqa.github.io/isort/) for keep imports in order.
+* Allow generating changelog just by using [gitchangelog](https://github.com/vaab/gitchangelog).
