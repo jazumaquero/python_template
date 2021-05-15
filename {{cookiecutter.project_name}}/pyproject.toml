@@ -4,7 +4,7 @@ name = "{{ cookiecutter.project_name }}"
 version = "{{ cookiecutter.version }}"
 description = "{{ cookiecutter.description }}"
 authors = ["{{ cookiecutter.author }} <{{ cookiecutter.email }}>"]
-readme = "README.rst"
+readme = "README.md"
 
 # Project Dependencies Section
 [tool.poetry.dependencies]
