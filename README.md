@@ -78,3 +78,4 @@ with [black](https://black.readthedocs.io/en/stable/index.html) to warranty stan
 and [isort](https://pycqa.github.io/isort/) for keep imports in order.
 * Allow generating changelog just by using [gitchangelog](https://github.com/vaab/gitchangelog).
 * Allow using [click](https://palletsprojects.com/p/click/) to create CLI (command line interpreter) applications.
+* Optionally create docker image with code (that may be useful when running web applications).
