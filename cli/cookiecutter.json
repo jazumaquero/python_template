@@ -4,14 +4,5 @@
   "description": "Put here some really nice description of the project",
   "author": "",
   "email": "",
-  "version": "0.1.0",
-  "python_version": [
-    "3.6",
-    "3.7",
-    "3.8",
-    "3.9",
-    "3.10"
-  ],
-  "is_cli": true,
-  "run_on_docker": true
+  "version": "0.1.0"
 }
