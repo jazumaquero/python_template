@@ -12,5 +12,6 @@
     "3.9",
     "3.10"
   ],
-  "is_cli": true
+  "is_cli": true,
+  "run_on_docker": true
 }
