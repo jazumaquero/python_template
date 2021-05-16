@@ -28,13 +28,17 @@ obtain desired version.
 In case of most of Linux base operative systems some Python version is already installed.
 
 ### Cookiecutter
-This template is based on [cookiecutter](https://github.com/cookiecutter/cookiecutter), and you can install with *pip*:
+This template is based on [cookiecutter](https://github.com/cookiecutter/cookiecutter), specially with version +1.7.
+You can install with *pip*:
 
-    pip install cookiecutter
+    pip install cookiecutter>=1.7
 
 However, it's strongly recommended using *pipx* when it is available on your system:
 
-    pipx install cookiecutter
+    pipx install cookiecutter>=1.7
+
+This repo is organized [cookiecutters in directories](https://cookiecutter.readthedocs.io/en/1.7.2/advanced/directories.html)
+in order to simplify the maintenance of different use case and make it neater and fast dialog.
 
 ### Pyenv
 As mentioned before, this cookiecutter template will use *pyenv* to install specific Python version you want to use for
@@ -68,7 +72,7 @@ environment, what maybe convenient in case you are using some IDE like *Pycharm*
 * Runtime Type checking using [typeguard](https://typeguard.readthedocs.io/en/latest/index.html) with *pytest* integration.
 * Generates documentation using [sphinx](https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html).
 >* Also allows using both *rst* and *md* files just by using [myst-parser](https://myst-parser.readthedocs.io/en/latest/).
->* Using *read-the-doscs* template for rendering documentation.
+>* Using *read-the-docs* template for rendering documentation.
 * Continuous Integration using with [tox](https://tox.readthedocs.io/en/latest/), including
 [tox-poetry](https://github.com/tkukushkin/tox-poetry) integration (probably will include
 [nox](https://nox.thea.codes/en/stable/) support later, but currently I use **Pycharm** a lot and its *tox* support is

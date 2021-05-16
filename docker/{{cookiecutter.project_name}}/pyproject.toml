@@ -9,13 +9,6 @@ readme = "README.md"
 # Project Dependencies Section
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.python_version }}"
-{% if cookiecutter.is_cli -%}click = "^7.0"{%- endif %}
-
-{% if cookiecutter.is_cli or cookiecutter.run_on_docker -%}
-# Entrypoints/Scripts Section
-[tool.poetry.scripts]
-{{cookiecutter.project_name}} = "{{cookiecutter.package_name}}.main:main"
-{%- endif %}
 
 # Development Dependencies Section
 [tool.poetry.dev-dependencies]
