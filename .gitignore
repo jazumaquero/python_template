@@ -130,3 +130,7 @@ dmypy.json
 
 # JetBrains
 .idea/
+
+
+# Temporary directory used to dump cookieecutter testing
+.target/

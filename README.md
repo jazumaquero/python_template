@@ -1,6 +1,8 @@
 # python_template
 Just another opinionated cookiecutter template to stop writing Python boilerplate and improve productivity
 
+![example workflow](https://github.com/jazumaquero/python-template/actions/workflows/push-yaml/badge.svg)
+
 ## Introduction
 Main objective of this template is to explore modern Python tools that may help on your daily basis job, mainly focus on
 any activity related with Continuous Integration (CI) and Continuous Delivery (CD), what may become quite handy when you

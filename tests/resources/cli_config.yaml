@@ -1,0 +1,8 @@
+default_context:
+  project_name: cli-name
+  package_name: cli_package_name
+  description: This is just another testing description
+  author: José Antonio Zumaquero Torres
+  email: jazumaquero@gmail.com
+  version: 0.1.0
+  python_version: 3.6
