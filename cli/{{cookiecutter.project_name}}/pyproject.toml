@@ -87,7 +87,7 @@ line-length = 120
 # Black configuration to make it work with Flake8.
 extend-ignore = ["E203", "W503"]
 # Extra Black configuration to apply changes only on required files.
-target-version = ["{{ cookiecutter.python_version }}"]
+target-version = ["py{{ cookiecutter.python_version.replace('.', '') }}"]
 include = "\\.pyi?$"
 extend-exclude = """
 # A regex preceded with ^/ will apply only to files and directories
