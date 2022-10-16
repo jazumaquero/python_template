@@ -42,6 +42,17 @@ However, it's strongly recommended using *pipx* when it is available on your sys
 This repo is organized [cookiecutters in directories](https://cookiecutter.readthedocs.io/en/1.7.2/advanced/directories.html)
 in order to simplify the maintenance of different use case and make it neater and fast dialog.
 
+You can use following examples to build your projects from this template using following commands:
+
+    # Create some python library/CLI project (use this as default
+    cookiecutter https://github.com/jazumaquero/python_template.git --directory="library"
+
+    # Create some python CLI project, mainly used for standalone applications won't require proper distribution
+    cookiecutter https://github.com/jazumaquero/python_template.git --directory="cli"
+
+    # Create some python application will run inside a Docker container. 
+    cookiecutter https://github.com/jazumaquero/python_template.git --directory="docker"
+
 ### Pyenv
 As mentioned before, this cookiecutter template will use *pyenv* to install specific Python version you want to use for
 development (this template is focused on using a single Python version).
