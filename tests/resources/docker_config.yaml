@@ -5,4 +5,4 @@ default_context:
   author: José Antonio Zumaquero Torres
   email: jazumaquero@gmail.com
   version: 0.1.0
-  python_version: 3.6
+  python_version: 3.8

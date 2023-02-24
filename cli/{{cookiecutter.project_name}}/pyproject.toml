@@ -18,8 +18,9 @@ click = "^7.0"
 # Development Dependencies Section
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.3"
-xdoctest = "^0.15.4"
+pytest-cov = "^4.0.0"
 coverage = { extras = ["toml"], version = "^5.5" }
+xdoctest = "^0.15.4"
 flake8 = "^3.9.1"
 flake8-bandit = "^2.1.2"
 flake8-bugbear = "^21.4.3"
@@ -42,7 +43,7 @@ gitchangelog = "^3.0.4"
 # Pytest Configuration Section (see more at https://docs.pytest.org/en/stable/reference.html#ini-options-ref)
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "--verbose --xdoctest --junitxml .reports/junit/pytests-results.xml"
+addopts = "--verbose --xdoctest --junitxml .reports/junit/pytests-results.xml --cov-report term-missing "
 
 # Coverage Configuration Section (see more at https://coverage.readthedocs.io/en/stable/config.html)
 [tool.coverage.paths]
@@ -73,6 +74,16 @@ output = ".reports/coverage/coverage.xml"
 
 [tool.coverage.html]
 directory = ".reports/coverage-html/coverage.html"
+
+[tool.mypy]
+python_version = "{{ cookiecutter.python_version }}"
+packages = "{{ cookiecutter.package_name }}"
+strict = true
+pretty = true
+show_column_numbers = true
+show_error_codes = true
+show_error_context = true
+junit_xml = .reports/junit/mypy-results.xml
 
 # Black Configuration Section (more at https://github.com/psf/black#configuration-format)
 [tool.black]
