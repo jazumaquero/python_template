@@ -14,8 +14,8 @@ FIND_LATEST_PYTHON_VERSION_AVAILABLE_COMMAND = "pyenv install --list | grep -v -
 # Command template to install some specific Python version with pyenv
 INSTALL_PYTHON_COMMAND = "pyenv install {}"
 
-# Command template to ensure poetry, tox and tox-poetry is installed
-INSTALL_POETRY_AND_TOX_COMMAND = "pyenv local {} && pip install --upgrade pip && pip install poetry tox tox-poetry"
+# Command template to ensure poetry, tox and pre-commit are installed
+INSTALL_POETRY_AND_TOX_COMMAND = "pyenv local {} && pip install --upgrade pip && pipx install poetry && pipx install tox && pipx install pre-commit"
 
 # Command template to create some virtual environment inside project folder (make easy to use IDEs)
 CREATE_VIRTUAL_ENVIRONMENT_COMMAND = "pyenv local {} && python -m venv .venv"
@@ -24,7 +24,7 @@ CREATE_VIRTUAL_ENVIRONMENT_COMMAND = "pyenv local {} && python -m venv .venv"
 INSTALL_DEPENDENCIES_ON_VIRTUAL_ENVIRONMENT_COMMAND = "poetry install"
 
 # Command template to initialize git with pre-commit hooks
-INIT_GIT_ON_PROJECT_COMMAND = "git init && poetry run pre-commit install"
+INIT_GIT_ON_PROJECT_COMMAND = "git init && pre-commit install"
 
 
 def install_base_dependencies():
