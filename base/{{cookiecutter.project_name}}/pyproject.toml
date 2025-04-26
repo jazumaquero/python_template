@@ -1,0 +1,117 @@
+# Project Information Section
+[tool.poetry]
+name = "{{ cookiecutter.project_name }}"
+version = "{{ cookiecutter.version }}"
+description = "{{ cookiecutter.description }}"
+authors = ["{{ cookiecutter.author }} <{{ cookiecutter.email }}>"]
+readme = "README.md"
+
+# Project Dependencies Section
+[tool.poetry.dependencies]
+python = "^{{ cookiecutter.python_version }}"
+{% for dependency in cookiecutter._custom_release_dependencies%}
+{{dependency.package}} ="{{dependency.version}}"
+{% endfor %}
+
+# Entrypoints/Scripts Section
+[tool.poetry.scripts]
+{{cookiecutter.project_name}} = "{{cookiecutter.package_name}}.main:main"
+
+# Development Dependencies Section
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.3"
+pytest-cov = "^4.0.0"
+coverage = { extras = ["toml"], version = "^5.5" }
+xdoctest = "^0.15.4"
+flake8 = "^3.9.1"
+flake8-bandit = "^2.1.2"
+flake8-bugbear = "^21.4.3"
+flake8-docstrings = "^1.6.0"
+flake8-rst-docstrings = "^0.2.2"
+flake8-black = "^0.2.1"
+darglint = "^0.1.1"
+pep8-naming = "^0.11.1"
+mypy = "^0.812"
+typeguard = "^2.12.0"
+Pygments = "^2.8.1"
+Sphinx = "^3.5.4"
+sphinx-rtd-theme = "^0.5.2"
+myst-parser = "^0.13.7"
+black = "^21.5b0"
+isort = "^5.8.0"
+gitchangelog = "^3.0.4"
+{% for dependency in cookiecutter._custom_dependencies.release%}
+{{dependency.package}} ="{{dependency.version}}"
+{% endfor %}
+
+# Pytest Configuration Section (see more at https://docs.pytest.org/en/stable/reference.html#ini-options-ref)
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--verbose --xdoctest --junitxml .reports/junit/pytests-results.xml --cov-report term-missing "
+
+# Coverage Configuration Section (see more at https://coverage.readthedocs.io/en/stable/config.html)
+[tool.coverage.paths]
+source = ["{{ cookiecutter.package_name }}", "*/site-packages"]
+
+[tool.coverage.run]
+branch = true
+source = ["{{ cookiecutter.package_name }}"]
+
+[tool.coverage.report]
+ignore_errors = true
+exclude_lines = [
+    # Have to re-enable the standard pragma
+    "pragma: no cover",
+    # Don't complain about missing debug-only code:
+    "def __repr__",
+    "if self\\.debug",
+    # Don't complain if tests don't hit defensive assertion code:
+    "raise AssertionError",
+    "raise NotImplementedError",
+    # Don't complain if non-runnable code isn't run:
+    "if 0:",
+    "if __name__ == .__main__.:"
+]
+
+[tool.coverage.xml]
+output = ".reports/coverage/coverage.xml"
+
+[tool.coverage.html]
+directory = ".reports/coverage-html/coverage.html"
+
+[tool.mypy]
+python_version = "{{ cookiecutter.python_version }}"
+packages = "{{ cookiecutter.package_name }}"
+strict = true
+pretty = true
+show_column_numbers = true
+show_error_codes = true
+show_error_context = true
+junit_xml = .reports/junit/mypy-results.xml
+
+# Black Configuration Section (more at https://github.com/psf/black#configuration-format)
+[tool.black]
+# Black configuration to make it work with iSort.
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+# Opinionated line-length (80 or 88 chars for each line is fine for vim,...but not too short for me)
+line-length = 120
+# Black configuration to make it work with Flake8.
+extend-ignore = ["E203", "W503"]
+# Extra Black configuration to apply changes only on required files.
+target-version = ["py{{ cookiecutter.python_version.replace('.', '') }}"]
+include = "\\.pyi?$"
+extend-exclude = """
+# A regex preceded with ^/ will apply only to files and directories
+# in the root of the project.
+# For instance
+#^/foo.py  # exclude a file named foo.py in the root of the project (in addition to the defaults)
+"""
+
+# Build System Section
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
