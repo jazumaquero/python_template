@@ -24,7 +24,7 @@ jobs:
           pipx install tox
       - name: Install package dependencies
         run: |
-          poetry install
+          poetry install --no-root
       - name: Run pipeline
         run: |
           tox
