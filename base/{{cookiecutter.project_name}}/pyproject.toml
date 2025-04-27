@@ -9,7 +9,7 @@ readme = "README.md"
 # Project Dependencies Section
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.python_version }}"
-{% for dependency in cookiecutter._custom_release_dependencies%}
+{% for dependency in cookiecutter._custom_dependencies.development %}
 {{dependency.package}} ="{{dependency.version}}"
 {% endfor %}
 
@@ -40,7 +40,7 @@ myst-parser = "^0.13.7"
 black = "^21.5b0"
 isort = "^5.8.0"
 gitchangelog = "^3.0.4"
-{% for dependency in cookiecutter._custom_dependencies.release%}
+{% for dependency in cookiecutter._custom_dependencies.release %}
 {{dependency.package}} ="{{dependency.version}}"
 {% endfor %}
 
