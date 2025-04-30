@@ -73,14 +73,13 @@ environment, what maybe convenient in case you are using some IDE like *Pycharm*
 >* Examples given on docstring will be checked with [xdoctest](https://xdoctest.readthedocs.io/en/latest/autoapi/xdoctest/index.html).
 * Coverage analysis is done with [coverage](https://coverage.readthedocs.io/en/stable/index.html).
 * Reporting files created (currently for *pytest* and *coverage*) on inside project directory with name ```.reports```.
-* Linting is made with [flake8 framework](https://flake8.pycqa.org/en/latest/), including:
->* Proper naming convention check with [pep8-naming](https://github.com/PyCQA/pep8-naming).
->* Added [flake8-bugbear](https://github.com/PyCQA/flake8-bugbear) to early detect bug and risky designs.
->* Added [flake8-bandit](https://github.com/tylerwince/flake8-bandit) to include some more extra rules.
->* Added [flake8-docstrins](https://gitlab.com/pycqa/flake8-docstrings) and
-[flake8-rst-docstrings](https://github.com/peterjc/flake8-rst-docstrings) for **docstring** linting.
->* Also added [darglint](https://github.com/terrencepreilly/darglint) as **flake8** plugin to lint documentation.
->* Configuration included at ```.flake8``` file.
+* Linting af formatting has been moving to [ruff](https://docs.astral.sh/ruff/), mainly due to it is extremely fast, and 
+provides same features than a lot of additional packages. Also, it provides a way of defining all configuration inside
+`pyproject.toml` file, reducing boilerplate. Deprecate the previous usage of:
+>* [black](https://black.readthedocs.io/en/stable/index.html) . 
+>* [isort](https://pycqa.github.io/isort/).
+>* [flake8 framework](https://flake8.pycqa.org/en/latest/).
+>* [pep8-naming](https://github.com/PyCQA/pep8-naming).
 * Static Type checking using [mypy](https://mypy.readthedocs.io/en/latest/index.html).
 * Runtime Type checking using [typeguard](https://typeguard.readthedocs.io/en/latest/index.html) with *pytest* integration.
 * Generates documentation using [sphinx](https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html).
@@ -91,8 +90,7 @@ environment, what maybe convenient in case you are using some IDE like *Pycharm*
 [nox](https://nox.thea.codes/en/stable/) support later, but currently I use **Pycharm** a lot and its *tox* support is
 quite convenient).
 * Keep repository neater, just by using a bunch of useful [pre-commit hooks](https://pre-commit.com/) working together
-with [black](https://black.readthedocs.io/en/stable/index.html) to warranty standard coding conventions,
-and [isort](https://pycqa.github.io/isort/) for keep imports in order.
+with [ruff](https://docs.astral.sh/ruff/) to warranty standard coding conventions, and for keep imports in order.
 * Allow generating changelog just by using [gitchangelog](https://github.com/vaab/gitchangelog).
 * Allow using [click](https://palletsprojects.com/p/click/) to create CLI (command line interpreter) applications.
 * Optionally create docker image with code (that may be useful when running web applications).
