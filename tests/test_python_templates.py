@@ -19,7 +19,7 @@ RESOURCES_DIRECTORY = os.path.join(CURRENT_PATH, "resources")
 )
 def test_template_generation(directory: str, config_file: str):
     # Lets start with naive approach that just verify template syntax is fine
-    cookiecutter(
+    result=cookiecutter(
         template=BASE_DIRECTORY,
         directory=os.path.join(BASE_DIRECTORY, directory),
         config_file=os.path.join(RESOURCES_DIRECTORY, config_file),
@@ -27,3 +27,6 @@ def test_template_generation(directory: str, config_file: str):
         overwrite_if_exists=True,
         output_dir=OUTPUT_DIRECTORY,
     )
+    for (dirpath, _, filenames) in os.walk(result):
+        for file in filenames:
+            print(os.path.join(dirpath, file))
