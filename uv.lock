@@ -407,7 +407,7 @@ wheels = [
 [[package]]
 name = "python-template"
 version = "0.5.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "tox" },
 ]

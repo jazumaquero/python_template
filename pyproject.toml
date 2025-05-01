@@ -2,7 +2,9 @@
 name = "python_template"
 version = "0.5.0"
 description = "Just another opinionated cookiecutter template to stop writing Python boilerplate."
-authors = ["José Antonio Zumaquero Tores <jazumaquer@gmail.com>"]
+authors = [
+    { name="José Antonio Zumaquero Tores", email="jazumaquer@gmail.com" },
+]
 requires-python = ">=3.9"
 dependencies = [
     "tox[tox-uv]>=4.25.0",
@@ -58,3 +60,13 @@ docstring-code-format = false
 # This only has an effect when the `docstring-code-format` setting is
 # enabled.
 docstring-code-line-length = "dynamic"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+include = ["/tests"]
+
+[tool.hatch.build.targets.wheel.sources]
+"tests" = "tests"
