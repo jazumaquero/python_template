@@ -14,12 +14,12 @@
   ],
   "_custom_dependencies":{
     "release":[
-      {"package":"click" ,"version": "^7.0"}
+      {"package":"click" ,"version": ">=7.0"}
     ],
     "development":[
     ]
   },
   "_custom_release_dependencies":[
-      {"package":"click" ,"version": "^7.0"}
+      {"package":"click" ,"version": ">=7.0"}
     ]
 }
