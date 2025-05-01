@@ -408,25 +408,23 @@ wheels = [
 name = "python-template"
 version = "0.5.0"
 source = { editable = "." }
-dependencies = [
-    { name = "tox" },
-]
 
 [package.dev-dependencies]
 dev = [
     { name = "cookiecutter" },
     { name = "pytest" },
     { name = "ruff" },
+    { name = "tox" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "tox", extras = ["tox-uv"], specifier = ">=4.25.0" }]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "cookiecutter", specifier = ">=1.7" },
     { name = "pytest", specifier = ">=6.2.3" },
     { name = "ruff", specifier = ">=0.11.7" },
+    { name = "tox", extras = ["tox-uv"], specifier = ">=4.25.0" },
 ]
 
 [[package]]
