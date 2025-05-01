@@ -1,39 +1,42 @@
 # Project Information Section
-[tool.poetry]
+[project]
 name = "{{ cookiecutter.project_name }}"
 version = "{{ cookiecutter.version }}"
 description = "{{ cookiecutter.description }}"
-authors = ["{{ cookiecutter.author }} <{{ cookiecutter.email }}>"]
-readme = "README.md"
-
-# Project Dependencies Section
-[tool.poetry.dependencies]
-python = "^{{ cookiecutter.python_version }}"
-{% for dependency in cookiecutter._custom_dependencies.development %}
-{{dependency.package}} ="{{dependency.version}}"
-{% endfor %}
+authors = [
+    {name ="{{ cookiecutter.author }}", email="{{ cookiecutter.email }}"},
+]
+readme = {file = "README.md", content-type = "text/markdown"}
+requires-python = ">={{ cookiecutter.python_version }}"
+dependencies = [
+    {% for dependency in cookiecutter._custom_dependencies.release %}
+    "{{dependency.package}}{{dependency.version}}",
+    {% endfor %}
+]
 
 # Entrypoints/Scripts Section
-[tool.poetry.scripts]
+[project.scripts]
 {{cookiecutter.project_name}} = "{{cookiecutter.package_name}}.main:main"
 
 # Development Dependencies Section
-[tool.poetry.dev-dependencies]
-pytest = "^6.2.3"
-pytest-cov = "^4.0.0"
-coverage = { extras = ["toml"], version = "^5.5" }
-ruff = "0.11.7"
-xdoctest = "^0.15.4"
-mypy = "^0.812"
-typeguard = "^2.12.0"
-Pygments = "^2.8.1"
-Sphinx = "^3.5.4"
-sphinx-rtd-theme = "^0.5.2"
-myst-parser = "^0.13.7"
-gitchangelog = "^3.0.4"
-{% for dependency in cookiecutter._custom_dependencies.release %}
-{{dependency.package}} ="{{dependency.version}}"
-{% endfor %}
+[dependency-groups]
+dev = [
+    "pytest>=6.2.3",
+    "pytest-cov>=4.0.0",
+    "coverage[toml]>5.5",
+    "ruff>=0.11.7",
+    "xdoctest>=0.15.4",
+    "mypy>=0.812",
+    "typeguard>=2.12.0",
+    "Pygments>=2.8.1",
+    "Sphinx>=3.5.4",
+    "sphinx-rtd-theme>=0.5.2",
+    "myst-parser>=0.13.7",
+    "gitchangelog>=3.0.4",
+    {% for dependency in cookiecutter._custom_dependencies.development %}
+    "{{dependency.package}}{{dependency.version}}",
+    {% endfor %}
+]
 
 # Pytest Configuration Section (see more at https://docs.pytest.org/en/stable/reference.html#ini-options-ref)
 [tool.pytest.ini_options]
@@ -120,8 +123,3 @@ docstring-code-format = false
 # This only has an effect when the `docstring-code-format` setting is
 # enabled.
 docstring-code-line-length = "dynamic"
-
-# Build System Section
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"

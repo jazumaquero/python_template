@@ -53,20 +53,11 @@ You can use following examples to build your projects from this template using f
     # Create some python application will run inside a Docker container. 
     cookiecutter https://github.com/jazumaquero/python_template.git --directory="docker"
 
-### Pyenv
-As mentioned before, this cookiecutter template will use *pyenv* to install specific Python version you want to use for
-development (this template is focused on using a single Python version).
-
-In case of Linux base system, it is recommended using [pyenv-installer](https://github.com/pyenv/pyenv-installer):
-
-    curl https://pyenv.run | bash
-
-In case of using windows, you can use [pyenv-win](https://github.com/pyenv-win/pyenv-win)
-
 ## Features
-* Ensure required Python version is already installed with [pyenv](https://github.com/pyenv/pyenv). 
-* Packaging and Dependency management with [poetry](https://python-poetry.org/).
-* Virtualenv inside project directory is created (and named as ```.venv```), and *poetry* will use as default virtual
+* Python virtualenv creation, Packaging and Dependency management with [uv](https://docs.astral.sh/uv/). It is using latest standards, and it 
+is much faster than *poetry* installing dependencies. Also allows skipping *pyenv* installation for getting some specific
+python version.
+* Virtualenv inside project directory is created (and named as ```.venv```), and *uv* will use as default virtual
 environment, what maybe convenient in case you are using some IDE like *Pycharm* or *VisualStudioCode* (see config at
 ```poetry.toml``` file).
 * Test framework is [pytest](https://docs.pytest.org/en/reorganize-docs/contents.html).
@@ -86,7 +77,7 @@ provides same features than a lot of additional packages. Also, it provides a wa
 >* Also allows using both *rst* and *md* files just by using [myst-parser](https://myst-parser.readthedocs.io/en/latest/).
 >* Using *read-the-docs* template for rendering documentation.
 * Continuous Integration using with [tox](https://tox.readthedocs.io/en/latest/), including
-[tox-poetry](https://github.com/tkukushkin/tox-poetry) integration (probably will include
+[tox-uv](https://github.com/tox-dev/tox-uv) integration (probably will include
 [nox](https://nox.thea.codes/en/stable/) support later, but currently I use **Pycharm** a lot and its *tox* support is
 quite convenient).
 * Keep repository neater, just by using a bunch of useful [pre-commit hooks](https://pre-commit.com/) working together

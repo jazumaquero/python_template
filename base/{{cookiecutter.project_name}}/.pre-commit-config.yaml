@@ -12,16 +12,20 @@ repos:
       - id: check-yaml
       - id: check-xml
       - id: check-toml
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.7.2
+    hooks:
+      - id: uv-lock
   - repo: local
     hooks:
       - id: ruff-check
         name: ruff-check
-        entry: poetry run check --fix
+        entry: uv run ruff check --fix
         language: system
         types: [ python ]
       - id: ruff-format
         name: ruff-format
-        entry: poetry run format
+        entry: uv run ruff format
         language: system
         types: [ python ]
 

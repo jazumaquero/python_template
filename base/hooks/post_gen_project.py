@@ -1,76 +1,70 @@
 import logging
 import os
+import subprocess
 import sys
 
 # Target Python version choose by user
 REQUIRED_PYTHON_VERSION = "{{ cookiecutter.python_version }}"
 
-# Command template to update pyenv to latest values
-UPDATE_PYENV_COMMAND = "pyenv update"
+# Commands for installing UV
+CHECK_UV_COMMAND = "uv --version"
+INSTALL_UV_COMMAND_LINUX = "curl -LsSf https://astral.sh/uv/install.sh | sh"
+INSTALL_UV_COMMAND_WINDOWS = 'powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"'
 
-# Command template to find latest available Python version from pyenv given required version (BASH required)
-FIND_LATEST_PYTHON_VERSION_AVAILABLE_COMMAND = "pyenv install --list | grep -v - | grep -v b | grep {} | tail -1"
+# Command template to update UV to latest values
+UPDATE_UV_COMMAND = "uv self update"
 
-# Command template to install some specific Python version with pyenv
-INSTALL_PYTHON_COMMAND = "pyenv install {}"
+# Command template to install some specific Python version with uv
+INSTALL_PYTHON_COMMAND = f"uv venv --python {REQUIRED_PYTHON_VERSION}"
 
-# Command template to ensure poetry, tox and pre-commit are installed
-INSTALL_POETRY_AND_TOX_COMMAND = "pyenv local {} && pip install --upgrade pip && pipx install poetry && pipx install tox && pipx install pre-commit"
-
-# Command template to create some virtual environment inside project folder (make easy to use IDEs)
-CREATE_VIRTUAL_ENVIRONMENT_COMMAND = "pyenv local {} && python -m venv .venv"
+# Command template to ensure tox and pre-commit are installed
+INSTALL_PRE_COMMIT_AND_TOX_COMMAND = 'uv add "tox[tox-uv]>=4.25.0" pre-commit --dev'
 
 # Command template to install all dependencies on virtual environment
-INSTALL_DEPENDENCIES_ON_VIRTUAL_ENVIRONMENT_COMMAND = "poetry install"
+INSTALL_DEPENDENCIES_ON_VIRTUAL_ENVIRONMENT_COMMAND = "uv sync --locked --all-extras --dev"
 
 # Command template to initialize git with pre-commit hooks
 INIT_GIT_ON_PROJECT_COMMAND = "git init && pre-commit install"
 
 
 def install_base_dependencies():
-    def get_latest_python_version():
-        if sys.platform.startswith("win"):
-            sys.exit("Windows platform currently not supported")
+    def ensure_uv_is_installed():
+        logging.info("Ensure UV is installed")
+        try:
+            is_installed = (subprocess.run(CHECK_UV_COMMAND.split(), capture_output=True).returncode == 0)
+        except:
+            is_installed = False
+        if not is_installed:
+            logging.info("Installing UV")
+            cmd = INSTALL_UV_COMMAND_WINDOWS if sys.platform.startswith("win") else INSTALL_UV_COMMAND_LINUX
+            os.system(cmd)
         else:
-            cmd = FIND_LATEST_PYTHON_VERSION_AVAILABLE_COMMAND.format(REQUIRED_PYTHON_VERSION)
-            latest_version = os.popen(cmd).read().strip()
-            logging.info("Using more recent python version from {}: {}".format(REQUIRED_PYTHON_VERSION, latest_version))
-            return latest_version
+            logging.info("UV is already installed")
 
-    def ensure_pyenv_is_updated():
-        logging.info("Updating pyenv")
-        os.system(UPDATE_PYENV_COMMAND)
+    def ensure_uv_is_updated():
+        logging.info("Ensure UV is updated")
+        os.system(UPDATE_UV_COMMAND)
 
     def ensure_python_version_is_installed():
-        logging.info("Following Python version will be installed: {}".format(python_version))
-        cmd = INSTALL_PYTHON_COMMAND.format(python_version)
-        os.system(cmd)
+        logging.info(f"Following Python version will be installed: {REQUIRED_PYTHON_VERSION}")
+        os.system(INSTALL_PYTHON_COMMAND)
 
-    def ensure_poetry_and_tox_are_installed():
-        logging.info("Installing poetry.")
-        cmd = INSTALL_POETRY_AND_TOX_COMMAND.format(python_version)
-        os.system(cmd)
-
-    def ensure_virtual_env_is_created():
-        logging.info("Creating virtualenv inside project directory.")
-        cmd = CREATE_VIRTUAL_ENVIRONMENT_COMMAND.format(python_version)
-        os.system(cmd)
+    def ensure_pre_commit_and_tox_are_installed():
+        logging.info("Installing pre-commit and tox.")
+        os.system(INSTALL_PRE_COMMIT_AND_TOX_COMMAND)
 
     def install_all_dependencies():
         logging.info("Install all dependencies on virtual environment.")
-        cmd = INSTALL_DEPENDENCIES_ON_VIRTUAL_ENVIRONMENT_COMMAND
-        os.system(cmd)
+        os.system(INSTALL_DEPENDENCIES_ON_VIRTUAL_ENVIRONMENT_COMMAND)
 
     def init_git_on_local():
         logging.info("Initialize git repository on local with pre-commit hooks.")
-        cmd = INIT_GIT_ON_PROJECT_COMMAND
-        os.system(cmd)
+        os.system(INIT_GIT_ON_PROJECT_COMMAND)
 
-    ensure_pyenv_is_updated()
-    python_version = get_latest_python_version()
+    ensure_uv_is_installed()
+    ensure_uv_is_updated()
     ensure_python_version_is_installed()
-    ensure_poetry_and_tox_are_installed()
-    ensure_virtual_env_is_created()
+    ensure_pre_commit_and_tox_are_installed()
     install_all_dependencies()
     init_git_on_local()
 
