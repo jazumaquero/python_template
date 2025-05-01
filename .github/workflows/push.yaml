@@ -12,19 +12,14 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }} and uv
+        uses: astral-sh/setup-uv@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install pipeline dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pipx install poetry
-          pipx install tox
       - name: Install package dependencies
         run: |
-          poetry install --no-root
+          uv sync --locked --all-extras --dev
       - name: Run pipeline
         run: |
-          tox
+          uv run tox
